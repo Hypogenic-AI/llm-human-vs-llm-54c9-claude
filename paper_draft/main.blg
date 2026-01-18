@@ -1,0 +1,48 @@
+This is BibTeX, Version 0.99d (TeX Live 2019/Debian)
+Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
+The top-level auxiliary file: main.aux
+The style file: plainnat.bst
+Database file #1: references.bib
+Warning--empty journal in anthropic2024claude
+You've used 15 entries,
+            2773 wiz_defined-function locations,
+            665 strings with 7917 characters,
+and the built_in function-call counts, 7723 in all, are:
+= -- 609
+> -- 646
+< -- 6
++ -- 219
+- -- 204
+* -- 650
+:= -- 1254
+add.period$ -- 45
+call.type$ -- 15
+change.case$ -- 110
+chr.to.int$ -- 15
+cite$ -- 31
+duplicate$ -- 319
+empty$ -- 532
+format.name$ -- 221
+if$ -- 1560
+int.to.chr$ -- 1
+int.to.str$ -- 1
+missing$ -- 15
+newline$ -- 83
+num.names$ -- 60
+pop$ -- 238
+preamble$ -- 1
+purify$ -- 95
+quote$ -- 0
+skip$ -- 257
+stack$ -- 0
+substring$ -- 105
+swap$ -- 23
+text.length$ -- 1
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 165
+warning$ -- 1
+while$ -- 52
+width$ -- 0
+write$ -- 189
+(There was 1 warning)

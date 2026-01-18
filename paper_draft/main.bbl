@@ -1,0 +1,108 @@
+\begin{thebibliography}{15}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[Anagnostidis and Bulian(2024)]{anagnostidis2024susceptible}
+Sotiris Anagnostidis and Jannis Bulian.
+\newblock How susceptible are {LLMs} to influence in prompts?
+\newblock In \emph{Conference on Language Modeling (COLM)}, 2024.
+
+\bibitem[Anthropic(2024)]{anthropic2024claude}
+Anthropic.
+\newblock The claude 3 model family: A new standard for intelligence.
+\newblock 2024.
+
+\bibitem[Brown et~al.(2020)Brown, Mann, Ryder, Subbiah, Kaplan, Dhariwal,
+  Neelakantan, Shyam, Sastry, Askell, et~al.]{brown2020gpt3}
+Tom Brown, Benjamin Mann, Nick Ryder, Melanie Subbiah, Jared~D Kaplan, Prafulla
+  Dhariwal, Arvind Neelakantan, Pranav Shyam, Girish Sastry, Amanda Askell,
+  et~al.
+\newblock Language models are few-shot learners.
+\newblock \emph{Advances in Neural Information Processing Systems},
+  33:\penalty0 1877--1901, 2020.
+
+\bibitem[Cohen(1988)]{cohen1988statistical}
+Jacob Cohen.
+\newblock Statistical power analysis for the behavioral sciences.
+\newblock \emph{Lawrence Erlbaum Associates}, 1988.
+
+\bibitem[Dugan et~al.(2024)Dugan, Hwang, Trhl{\'\i}k, Zhu, Luber, Ippolito, and
+  Callison-Burch]{dugan2024raid}
+Liam Dugan, Alyssa Hwang, Filip Trhl{\'\i}k, Andrew Zhu, Josh Luber, Daphne
+  Ippolito, and Chris Callison-Burch.
+\newblock {RAID}: A shared benchmark for robust evaluation of machine-generated
+  text detectors.
+\newblock In \emph{Proceedings of the 62nd Annual Meeting of the Association
+  for Computational Linguistics (ACL)}, 2024.
+
+\bibitem[Flesch(1948)]{flesch1948readability}
+Rudolph Flesch.
+\newblock A new readability yardstick.
+\newblock \emph{Journal of Applied Psychology}, 32\penalty0 (3):\penalty0
+  221--233, 1948.
+
+\bibitem[Giles et~al.(1991)Giles, Coupland, and
+  Coupland]{giles1991accommodation}
+Howard Giles, Nikolas Coupland, and Justine Coupland.
+\newblock Accommodation theory: Communication, context, and consequence.
+\newblock \emph{Contexts of Accommodation: Developments in Applied
+  Sociolinguistics}, pages 1--68, 1991.
+
+\bibitem[Guo et~al.(2023)Guo, Zhang, Wang, Jiang, Nie, Ding, Yue, and
+  Wu]{guo2023hc3}
+Biyang Guo, Xin Zhang, Ziyuan Wang, Minqi Jiang, Jinran Nie, Yuxuan Ding,
+  Jianwei Yue, and Yupeng Wu.
+\newblock How close is {ChatGPT} to human experts? comparison corpus,
+  evaluation, and detection.
+\newblock \emph{arXiv preprint arXiv:2301.07597}, 2023.
+
+\bibitem[Guo et~al.(2024)Guo, Chen, Wang, Chang, Pei, Chawla, Wiest, and
+  Zhang]{guo2024multiagent}
+Taicheng Guo, Xiuying Chen, Yaqi Wang, Ruyi Chang, Shichao Pei, Nitesh~V
+  Chawla, Olaf Wiest, and Xiangliang Zhang.
+\newblock Large language model based multi-agents: A survey of progress and
+  challenges.
+\newblock In \emph{International Joint Conference on Artificial Intelligence
+  (IJCAI)}, 2024.
+
+\bibitem[Kincaid et~al.(1975)Kincaid, Fishburne~Jr, Rogers, and
+  Chissom]{kincaid1975derivation}
+J~Peter Kincaid, Robert~P Fishburne~Jr, Richard~L Rogers, and Brad~S Chissom.
+\newblock Derivation of new readability formulas for navy enlisted personnel.
+\newblock \emph{Research Branch Report 8-75, Naval Technical Training Command},
+  1975.
+
+\bibitem[OpenAI(2023)]{openai2023gpt4}
+OpenAI.
+\newblock {GPT-4} technical report.
+\newblock \emph{arXiv preprint arXiv:2303.08774}, 2023.
+
+\bibitem[Sharma et~al.(2024)Sharma, Tong, Korbak, Duvenaud, Askell, Bowman,
+  Cheng, Durmus, Hatfield-Dodds, Johnston, et~al.]{sharma2024sycophancy}
+Mrinank Sharma, Meg Tong, Tomasz Korbak, David Duvenaud, Amanda Askell,
+  Samuel~R Bowman, Newton Cheng, Esin Durmus, Zac Hatfield-Dodds, Scott~R
+  Johnston, et~al.
+\newblock Towards understanding sycophancy in language models.
+\newblock In \emph{International Conference on Learning Representations
+  (ICLR)}, 2024.
+
+\bibitem[Su et~al.(2023)Su, Wang, and Chen]{su2023hc3plus}
+Yicheng Su, Zhenmei Wang, and Zhaoqiang Chen.
+\newblock {HC3} plus: A semantic-invariant human {ChatGPT} comparison corpus.
+\newblock \emph{arXiv preprint arXiv:2309.02731}, 2023.
+
+\bibitem[Wang et~al.(2024)Wang, Lyu, Wei, et~al.]{wang2024persona}
+Tiancheng Wang, Yuanshun Lyu, Jerry Wei, et~al.
+\newblock Quantifying the persona effect in {LLM} simulations.
+\newblock \emph{arXiv preprint arXiv:2402.10811}, 2024.
+
+\bibitem[Zheng et~al.(2023)Zheng, Pei, and Jurgens]{zheng2023personas}
+Mingqian Zheng, Jiaxin Pei, and David Jurgens.
+\newblock When ``a helpful assistant'' is not really helpful: Personas in
+  system prompts do not improve performances of large language models.
+\newblock \emph{arXiv preprint arXiv:2311.10054}, 2023.
+
+\end{thebibliography}

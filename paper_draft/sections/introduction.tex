@@ -1,0 +1,23 @@
+\section{Introduction}
+
+Large Language Models (LLMs) have become fundamental infrastructure for a wide range of applications, from conversational assistants to complex multi-agent systems \citep{brown2020gpt3, openai2023gpt4, anthropic2024claude}. As these systems proliferate, an important question emerges: do LLMs behave differently depending on \emph{who} they perceive as the source of a prompt? In particular, with the rise of LLM-to-LLM communication in agentic systems \citep{guo2024multiagent}, understanding whether LLMs respond differently to prompts that appear to originate from humans versus other LLMs becomes critical for system design and alignment.
+
+Prior work has established that human-written and LLM-generated text exhibit distinctive stylistic differences. Human text tends to be shorter, more colloquial, emotionally expressive, and exhibits higher vocabulary diversity, while LLM text is typically longer, more formal, logically structured, and uses a smaller vocabulary with lower word density \citep{guo2023hc3, dugan2024raid}. These differences are robust enough that classifiers can reliably distinguish between human and machine-generated text. A natural question arises: if stylistic features can signal the origin of text, do LLMs implicitly respond to these signals by adapting their behavior?
+
+Research on LLM sycophancy \citep{sharma2024sycophancy} demonstrates that models trained with human feedback tend to adapt their responses to match perceived user preferences. Similarly, work on prompt susceptibility \citep{anagnostidis2024susceptible} shows that LLMs alter their behavior based on perceived authority and confidence signals in prompts. However, no prior work has directly investigated whether the stylistic characteristics associated with human versus LLM authorship affect model behavior when semantic content is controlled.
+
+\paragraph{Research Question.} We investigate: \emph{Do LLMs exhibit different behaviors when presented with prompts written in human style versus prompts written in LLM style, when the semantic content is held constant?}
+
+\paragraph{Our Contribution.} We present the first controlled study of how prompt style affects LLM response behavior. Our contributions are:
+
+\begin{enumerate}
+    \item \textbf{Novel experimental paradigm.} We design a methodology to create semantically equivalent prompt pairs that differ only in stylistic features characteristic of human versus LLM writing, based on empirically-grounded characteristics from the detection literature.
+
+    \item \textbf{Strong empirical evidence for style mirroring.} We demonstrate that LLMs significantly alter their response behavior based on prompt style, with large effect sizes: responses to formal LLM-style prompts are 66\% longer (Cohen's $d = 2.07$), use 120\% more bullet points ($d = 1.44$), and exhibit substantially higher reading difficulty.
+
+    \item \textbf{Cross-model validation.} We show that these effects are consistent across two major model families (GPT-4 and Claude), suggesting a general phenomenon rather than model-specific behavior.
+
+    \item \textbf{Practical implications.} Our findings establish prompt style as an important dimension for prompt engineering, multi-agent system design, and AI safety evaluation.
+\end{enumerate}
+
+\paragraph{Paper Organization.} Section~\ref{sec:related} reviews related work on human-LLM text differences, sycophancy, and prompt sensitivity. Section~\ref{sec:methodology} describes our experimental methodology, including prompt construction and evaluation metrics. Section~\ref{sec:results} presents our empirical findings with statistical analysis. Section~\ref{sec:discussion} interprets results, discusses limitations, and explores implications. Section~\ref{sec:conclusion} summarizes our contributions and outlines future work.

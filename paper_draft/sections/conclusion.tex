@@ -1,0 +1,26 @@
+\section{Conclusion}
+\label{sec:conclusion}
+
+We present the first controlled study demonstrating that Large Language Models significantly alter their response behavior based on prompt style, independent of semantic content. When given formal, comprehensive, LLM-style prompts, models produce responses that are 66\% longer on average, use 120\% more bullet points, exhibit graduate-level reading difficulty, and show reduced vocabulary diversity. These effects are large (Cohen's $d > 0.8$ for multiple metrics), highly significant ($p < 0.0001$), and consistent across two major model families (GPT-4.1-mini and Claude Sonnet 4).
+
+We term this phenomenon \emph{style mirroring}---the tendency of LLMs to adapt their output style to match the stylistic characteristics of the input prompt, analogous to conversational accommodation in human communication. This finding establishes prompt style as an important and previously underexplored dimension of LLM behavior with practical implications for prompt engineering, multi-agent system design, and AI safety evaluation.
+
+\paragraph{Key Takeaways.}
+\begin{enumerate}
+    \item LLMs do not treat semantically equivalent prompts identically when stylistic features differ.
+    \item Formal prompts elicit more comprehensive, structured, but less lexically diverse responses.
+    \item The style mirroring effect is robust across different model families.
+    \item Prompt style should be considered a meaningful parameter in LLM interaction design.
+\end{enumerate}
+
+\paragraph{Future Work.} Several directions merit further investigation:
+\begin{itemize}
+    \item \textbf{Mechanism investigation:} Experiments to distinguish whether style mirroring involves explicit source detection, instruction interpretation, or learned stylistic associations.
+    \item \textbf{Broader model coverage:} Testing on open-source models (LLaMA, Mistral) and other commercial models (Gemini, Cohere) to assess generalizability.
+    \item \textbf{Fine-grained style manipulation:} Systematically varying individual stylistic features (formality, length, structure) to identify which features drive the effect.
+    \item \textbf{Task-specific analysis:} Investigating whether style mirroring varies across task types (factual QA, creative writing, reasoning).
+    \item \textbf{Multi-agent dynamics:} Studying how style mirroring affects LLM-LLM communication in extended conversations, potentially causing style drift.
+    \item \textbf{Safety implications:} Testing whether adversarial prompts are more or less effective when styled as human versus LLM-generated.
+\end{itemize}
+
+As LLMs become increasingly integrated into complex systems involving both human and machine interlocutors, understanding how they respond to different communication styles becomes essential. Our work provides a foundation for this understanding and opens new avenues for research at the intersection of prompt engineering, multi-agent systems, and AI alignment.

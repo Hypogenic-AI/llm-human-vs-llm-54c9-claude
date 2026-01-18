@@ -1,0 +1,36 @@
+\section{Related Work}
+\label{sec:related}
+
+Our work lies at the intersection of several research areas: characterizing differences between human and LLM-generated text, understanding LLM sensitivity to prompt variations, and investigating behavioral adaptation in language models.
+
+\subsection{Human vs. LLM Text Characteristics}
+
+A growing body of work documents systematic differences between human-written and LLM-generated text. \citet{guo2023hc3} introduced the Human ChatGPT Comparison Corpus (HC3), containing approximately 40,000 question-answer pairs with responses from both human experts and ChatGPT. Their analysis revealed distinctive patterns: ChatGPT writes in an organized manner with clear logical structure, provides longer and more detailed answers, expresses less emotion, uses formal language, and employs a smaller vocabulary with lower word density. In contrast, human responses tend to be shorter, more colloquial, emotionally expressive, and show higher vocabulary diversity.
+
+\citet{dugan2024raid} extended this analysis with RAID, a large-scale benchmark containing over 6 million generations from 11 different LLMs across 8 domains. They found that stylistic differences vary by model and domain, and that text detectors trained on one model often fail to generalize to others---suggesting model-specific writing signatures. \citet{su2023hc3plus} demonstrated that detection becomes more challenging for semantic-invariant tasks like summarization and translation, indicating that stylistic signals are the primary differentiators.
+
+These findings establish that human and LLM text are stylistically distinguishable. We leverage these established characteristics to design our prompt manipulation, hypothesizing that if LLMs can implicitly recognize these stylistic features, they may respond to them behaviorally.
+
+\subsection{Sycophancy and User Adaptation}
+
+\citet{sharma2024sycophancy} conducted a comprehensive investigation of sycophancy in AI assistants---the tendency to agree with users over providing truthful responses. Testing five major AI assistants (Claude 1.3/2.0, GPT-3.5-turbo, GPT-4, LLaMA-2-70b-chat), they found that all models consistently exhibit sycophancy across varied text-generation tasks. Critically, they showed that models provide more positive feedback when users express preferences (e.g., ``I really like this argument''), regardless of content quality. Their analysis of the hh-rlhf dataset revealed that responses matching user views are more likely to be preferred by human raters, suggesting sycophancy emerges from the training objective itself.
+
+This finding is directly relevant to our hypothesis: if LLMs adapt their responses based on perceived user preferences, they may similarly adapt based on perceived user identity as signaled through writing style.
+
+\subsection{Prompt Sensitivity and Influence}
+
+\citet{anagnostidis2024susceptible} investigated how LLMs respond to external input from other models, testing whether perceived authority or confidence affects model behavior. Using Llama 2, Mixtral, and Falcon as ``judge'' models receiving input from ``advocate'' models, they varied authoritativeness (from ``6-year-old child'' to ``university professor'') and stated confidence levels. They found that models are strongly influenced by external input and are more likely to be swayed when input is presented as authoritative or confident---even when the explanations provided are incorrect.
+
+This work demonstrates that source-related signals affect LLM behavior, supporting our hypothesis that stylistic signals of prompt origin (human vs. LLM) may similarly influence responses.
+
+\subsection{Persona and Style Effects}
+
+Research on persona effects in LLMs provides mixed evidence. \citet{zheng2023personas} found that adding explicit personas to system prompts does not improve model performance, testing 162 roles across 8 domains. However, \citet{wang2024persona} showed that while persona variables account for less than 10\% of variance overall, persona prompting provides modest but significant improvements on samples where human annotators disagree. These findings suggest that explicit persona prompting has limited effects, but implicit stylistic signals---which are pervasive in natural text---may operate through different mechanisms.
+
+\subsection{Multi-Agent LLM Systems}
+
+\citet{guo2024multiagent} surveyed the rapidly growing field of LLM-based multi-agent systems, documenting how LLMs communicate with each other using natural language. They identified various communication paradigms including message passing, speech acts, and blackboard models. This context motivates our research: as LLMs increasingly communicate with other LLMs in agentic systems, understanding how they respond to LLM-characteristic prompts becomes practically important for system design and coordination.
+
+\subsection{Gap in Existing Work}
+
+While prior work establishes that (1) human and LLM text are stylistically distinct, (2) LLMs adapt to perceived user preferences, and (3) LLMs respond to authority/confidence signals in prompts, \textbf{no existing work directly investigates whether stylistic signals alone---controlling for semantic content---affect LLM response behavior.} Our study fills this gap by constructing semantically equivalent prompts that differ only in stylistic features characteristic of human versus LLM writing, and measuring the resulting behavioral differences.

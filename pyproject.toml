@@ -1,0 +1,10 @@
+[project]
+name = "research-workspace"
+version = "0.1.0"
+description = "Research workspace for LLM human vs LLM prompt style experiments"
+requires-python = ">=3.10"
+dependencies = []
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"

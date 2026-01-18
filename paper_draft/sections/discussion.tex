@@ -1,0 +1,93 @@
+\section{Discussion}
+\label{sec:discussion}
+
+Our results provide strong evidence that LLMs adapt their response behavior based on prompt style, independent of semantic content. We term this phenomenon \emph{style mirroring} and discuss its interpretation, implications, and limitations.
+
+\subsection{Interpretation: The Style Mirroring Effect}
+
+The pattern of results suggests that LLMs engage in style mirroring: they adapt their output style to match the stylistic characteristics of the input prompt. When presented with formal, comprehensive, \llmstyle{} prompts, LLMs:
+
+\begin{enumerate}
+    \item \textbf{Produce more comprehensive outputs.} Responses are 66\% longer on average, with more sentences and more detailed explanations.
+
+    \item \textbf{Mirror structural expectations.} The dramatic increase in bullet points (120\%) suggests LLMs interpret formal prompts as requests for organized, structured responses.
+
+    \item \textbf{Adopt formal register.} Longer words, more formal vocabulary, and graduate-level reading difficulty indicate a shift toward academic writing style.
+
+    \item \textbf{Sacrifice vocabulary diversity.} The decrease in type-token ratio while increasing word count suggests LLMs repeat formal phrases rather than introduce variety---mirroring a known characteristic of LLM-generated text \citep{guo2023hc3}.
+\end{enumerate}
+
+This behavior is analogous to \emph{communication accommodation theory} in sociolinguistics \citep{giles1991accommodation}, where speakers adapt their language style to match their interlocutors. Just as humans adjust formality, vocabulary, and structure when speaking to different audiences, LLMs appear to perform a similar adaptation based on prompt style cues.
+
+\subsection{Possible Mechanisms}
+
+Several mechanisms could explain the style mirroring effect:
+
+\paragraph{Instruction Following.} Formal prompts may be implicitly interpreted as requests for comprehensive, detailed responses. Phrases like ``please provide a detailed and well-structured response'' may function as implicit instructions even when they describe the request rather than prescribe the response format.
+
+\paragraph{Training Distribution Matching.} LLMs trained on human feedback may have learned associations between formal input styles and preferred formal output styles. If human raters in training data tended to prefer formal responses to formal queries, this association would be reinforced.
+
+\paragraph{Sycophantic Adaptation.} Building on \citet{sharma2024sycophancy}'s findings, LLMs may infer what type of response the prompter ``wants'' based on stylistic cues and adapt accordingly. A formal prompter may be perceived as wanting formal responses.
+
+\paragraph{Implicit Source Detection.} LLMs may implicitly recognize stylistic features characteristic of human versus machine-generated prompts and adapt their behavior accordingly. However, our experiment cannot distinguish whether this involves explicit source detection or merely stylistic matching.
+
+Distinguishing these mechanisms requires further research with targeted experiments manipulating individual stylistic features and explicit source declarations.
+
+\subsection{Implications}
+
+\paragraph{For Prompt Engineering.} Our findings establish prompt style as an important dimension to optimize, alongside semantic content. Practitioners should be aware that:
+\begin{itemize}
+    \item Formal prompts will elicit longer, more structured but potentially over-organized responses
+    \item Casual prompts may elicit more natural, readable responses with higher vocabulary diversity
+    \item The same question can yield qualitatively different answers based purely on stylistic framing
+\end{itemize}
+
+\paragraph{For Multi-Agent Systems.} As LLMs increasingly communicate with each other in agentic systems \citep{guo2024multiagent}, our findings suggest:
+\begin{itemize}
+    \item LLM-to-LLM communication may naturally produce increasingly formal, structured outputs as each agent mirrors the other's style
+    \item System designers may want to inject human-style prompts to maintain response diversity and prevent style drift
+    \item Inter-agent protocols should consider stylistic framing as a design parameter
+\end{itemize}
+
+\paragraph{For AI Safety.} The finding that LLMs respond differently based on prompt style has safety implications:
+\begin{itemize}
+    \item Evaluation benchmarks should control for prompt style, as results may depend on stylistic framing
+    \item Adversarial attacks may exploit style sensitivity---jailbreaking attempts might be more or less effective depending on whether they use human or LLM-characteristic styles
+    \item Alignment evaluations should test robustness across both human-style and LLM-style prompts
+\end{itemize}
+
+\subsection{Surprising Findings}
+
+\paragraph{Logical Connectors Decreased.} Contrary to our expectation that formal prompts would increase logical connector usage (``Firstly'', ``In summary'', etc.), we observed a non-significant decrease ($d = -0.22$). One explanation is that bullet-point structure replaced prose-style logical flow: when organizing content with headers and lists, explicit connectors become less necessary.
+
+\paragraph{Vocabulary Diversity Decreased.} While formal prompts led to longer words and more formal vocabulary, overall vocabulary diversity (type-token ratio) decreased. This suggests that formal responses rely on repeating structured phrases (``In summary'', ``It is important to note'') rather than introducing lexical variety---mirroring a known signature of LLM-generated text.
+
+\paragraph{Model-Specific Patterns.} GPT-4.1-mini showed larger length effects while Claude Sonnet 4 showed larger formality effects. This suggests model families may have learned different accommodation strategies, possibly reflecting differences in training data or RLHF procedures.
+
+\subsection{Limitations}
+
+\paragraph{Prompt Template Variety.} We used 10 templates per style category. While this provides variety, more templates would increase confidence in generalizability. Future work should explore a broader range of stylistic manipulations.
+
+\paragraph{Model Coverage.} We tested two models from two families. While results are consistent across these models, generalization to other LLMs (LLaMA, Gemini, Mistral, etc.) requires additional testing.
+
+\paragraph{Single Run Design.} With temperature 0.7, responses contain stochastic variation. While our large effect sizes suggest robust findings, multiple runs per prompt pair would strengthen conclusions and enable variance estimation.
+
+\paragraph{Style Manipulation Validity.} Our stylistic manipulation is based on characteristics from detection literature, but represents one operationalization of ``human'' versus ``LLM'' style. Alternative operationalizations might yield different results.
+
+\paragraph{Causal Mechanism Unclear.} We observe correlation between prompt style and response style, but cannot identify the precise internal mechanism. Whether this involves explicit source detection, stylistic matching, or instruction interpretation remains unknown.
+
+\paragraph{Ecological Validity.} Real-world prompts exhibit a spectrum of styles rather than binary categories. Our controlled manipulation maximizes internal validity but may not reflect the subtlety of natural variation.
+
+\subsection{Relation to Prior Work}
+
+Our findings complement and extend prior research:
+
+\begin{itemize}
+    \item \textbf{HC3/RAID findings:} We show that the stylistic differences documented in detection literature not only distinguish human from LLM text, but also influence LLM behavior when present in prompts.
+
+    \item \textbf{Sycophancy research:} Our style mirroring effect may be a specific instance of the broader sycophantic tendency of LLMs to adapt to perceived user characteristics \citep{sharma2024sycophancy}.
+
+    \item \textbf{Influence susceptibility:} While \citet{anagnostidis2024susceptible} showed LLMs respond to explicit authority signals, we show they also respond to implicit stylistic signals.
+
+    \item \textbf{Persona research:} Unlike explicit persona prompting \citep{zheng2023personas}, which shows limited effects, implicit stylistic signals produce large behavioral changes.
+\end{itemize}

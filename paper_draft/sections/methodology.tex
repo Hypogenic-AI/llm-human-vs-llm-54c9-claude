@@ -1,0 +1,114 @@
+\section{Methodology}
+\label{sec:methodology}
+
+We present a controlled experiment to test whether LLMs respond differently to prompts written in human style versus LLM style. Our methodology involves four stages: (1) constructing semantically equivalent prompt pairs with distinct stylistic profiles, (2) querying multiple LLMs with both prompt versions, (3) extracting linguistic features from responses, and (4) performing statistical analysis.
+
+\subsection{Prompt Pair Construction}
+
+\paragraph{Base Questions.} We curated 50 diverse questions spanning 14 topic categories to ensure broad coverage: science (sky color, vaccines, earthquakes, dreams, photosynthesis), technology (machine learning, WiFi, blockchain, touchscreens, cloud computing), history and social topics (Rome, WWI, procrastination, leadership, education), practical knowledge (memory improvement, language learning, motivation, diet, sleep), opinion-based questions (social media, space exploration, AI and jobs, electric vehicles, remote work), philosophy (happiness, meaning, free will, consciousness, beauty), creative tasks (story writing, haiku, riddles, planets, superheroes), math and logic (zero, infinity, logical fallacies, problem-solving, negative numbers), nature and environment (bird migration, seasons, rainforests, climate change, pollution), and health and psychology (exercise, stress, lie detection, fear, memory formation).
+
+\paragraph{Stylistic Manipulation.} Based on the linguistic characteristics identified in prior work \citep{guo2023hc3, dugan2024raid}, we designed two stylistic treatments:
+
+\textbf{\human{} characteristics:}
+\begin{itemize}
+    \item Shorter, more direct phrasing
+    \item Colloquial language (``Hey'', ``Like'', ``pls'', ``haha'')
+    \item Emotional markers (exclamation points, ellipses)
+    \item Informal address and conversational tone
+    \item Examples: ``So I was wondering...'', ``Help me out here'', ``Any ideas?''
+\end{itemize}
+
+\textbf{\llmstyle{} characteristics:}
+\begin{itemize}
+    \item Longer, more comprehensive phrasing
+    \item Formal language (``I would like to request'', ``comprehensive explanation'')
+    \item Explicit structural requests (``Please provide a detailed and well-structured response'')
+    \item Academic/professional tone
+    \item Examples: ``For educational purposes, I would like to understand...'', ``A systematic explanation covering all relevant aspects would be appreciated''
+\end{itemize}
+
+We developed 10 templates for each style category, ensuring variety while maintaining consistent stylistic characteristics. Each base question was paired with one human-style and one LLM-style prompt, preserving semantic content while manipulating only stylistic features.
+
+\paragraph{Example Prompt Pairs.} Table~\ref{tab:prompt_examples} shows representative examples of our prompt construction.
+
+\begin{table}[t]
+\centering
+\caption{Example prompt pairs showing human-style and LLM-style versions of the same questions. Semantic content is preserved while stylistic features are systematically varied.}
+\label{tab:prompt_examples}
+\small
+\begin{tabular}{p{2.2cm}p{4.8cm}p{5.8cm}}
+\hline
+\textbf{Base Question} & \textbf{\human{}} & \textbf{\llmstyle{}} \\
+\hline
+Why is the sky blue? & ``So I was wondering, Why is the sky blue? Any ideas?'' & ``I would like to request a comprehensive explanation regarding the following topic: Why is the sky blue? Please provide a detailed and well-structured response.'' \\
+\hline
+Why do people procrastinate? & ``Help me out here - Why do people procrastinate?'' & ``For educational purposes, I would like to understand the following concept more thoroughly: Why do people procrastinate? A comprehensive breakdown of the topic would be greatly appreciated.'' \\
+\hline
+What is happiness? & ``So I was wondering, What is happiness? Any ideas?'' & ``The topic I wish to explore is as follows: What is happiness? I would appreciate if you could provide a systematic explanation covering all relevant aspects.'' \\
+\hline
+\end{tabular}
+\end{table}
+
+\subsection{Models and Experimental Setup}
+
+\paragraph{Models Tested.} We selected two state-of-the-art LLMs from different model families to test cross-model generalizability:
+\begin{itemize}
+    \item \textbf{GPT-4.1-mini} (OpenAI): A capable model from the GPT-4 family
+    \item \textbf{Claude Sonnet 4} (Anthropic): A recent model from the Claude family
+\end{itemize}
+
+\paragraph{API Parameters.} All models were queried with consistent parameters:
+\begin{itemize}
+    \item Temperature: 0.7 (standard creative sampling)
+    \item Max tokens: 500 (sufficient for diverse responses)
+    \item Top-p: 0.95 (standard nucleus sampling)
+    \item Random seed: 42 (for reproducibility)
+\end{itemize}
+
+\paragraph{Experimental Protocol.} We queried each model with all 50 questions in both stylistic variants, yielding $50 \times 2 \times 2 = 200$ total API calls. The experiment achieved 100\% API success rate.
+
+\subsection{Feature Extraction}
+
+We extracted nine linguistic features from each response, designed to capture different dimensions of response behavior:
+
+\begin{table}[h]
+\centering
+\caption{Linguistic features extracted from LLM responses.}
+\label{tab:features}
+\small
+\begin{tabular}{lll}
+\hline
+\textbf{Feature} & \textbf{Measures} & \textbf{Computation} \\
+\hline
+Word Count & Verbosity & Total words in response \\
+Sentence Count & Detail level & Total sentences \\
+Avg Word Length & Vocabulary complexity & Mean characters per word \\
+Type-Token Ratio & Vocabulary diversity & Unique words / total words \\
+Flesch Reading Ease & Readability & Standard formula \citep{flesch1948readability} \\
+Flesch-Kincaid Grade & Reading level & Standard formula \citep{kincaid1975derivation} \\
+Formal Word Ratio & Formality & Proportion of formal words \\
+Bullet Points & Structure & Count of bullet/list markers \\
+Logical Connectors & Organization & Count of connective phrases \\
+\hline
+\end{tabular}
+\end{table}
+
+The Flesch Reading Ease score ranges from 0--100, with lower scores indicating more difficult text (0--30: very difficult, 30--50: difficult, 50--60: fairly difficult, 60--70: standard, 70--80: fairly easy, 80--90: easy, 90--100: very easy). The Flesch-Kincaid Grade Level approximates the U.S. grade level required to understand the text.
+
+\subsection{Statistical Analysis}
+
+\paragraph{Hypothesis Testing.} For each feature, we test:
+\begin{itemize}
+    \item $H_0$: No difference in feature values between \human{} and \llmstyle{} prompt conditions
+    \item $H_1$: Feature values differ based on prompt style
+\end{itemize}
+
+We use paired $t$-tests (appropriate for our within-subject design where the same questions appear in both conditions) with Bonferroni correction for multiple comparisons across 10 features (adjusted $\alpha = 0.005$).
+
+\paragraph{Effect Size.} We report Cohen's $d$ to quantify the practical significance of observed differences \citep{cohen1988statistical}:
+\begin{equation}
+d = \frac{\bar{x}_{\text{LLM}} - \bar{x}_{\text{Human}}}{s_{\text{pooled}}}
+\end{equation}
+where $\bar{x}$ denotes the mean and $s_{\text{pooled}}$ is the pooled standard deviation. Following standard conventions: $|d| < 0.2$ is negligible, $0.2 \leq |d| < 0.5$ is small, $0.5 \leq |d| < 0.8$ is medium, and $|d| \geq 0.8$ is large.
+
+\paragraph{Reproducibility.} All code, data, and analysis scripts are available in our supplementary materials. The experiment was conducted with a fixed random seed (42) for reproducibility. Total execution time was approximately 25 minutes for 200 API calls.
